@@ -49,11 +49,11 @@ class AdminController extends Controller
         'password' => 'required|min:6|confirmed',
         ]);
 
-
+        $hashedPassword = Hash::make($data['password']);
         $user = User::create([
         'name' => $data['name'],
         'email' => $data['email'],
-        'password' => $data['password'],
+        'password' => $hashedPassword,
         ]);
 
         return redirect()->route('login');
