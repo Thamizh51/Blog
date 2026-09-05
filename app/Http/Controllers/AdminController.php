@@ -42,22 +42,22 @@ class AdminController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'email' => [
-            'required',
-            'email',
-            'unique:users,email',
-        ],
-        'password' => 'required|min:6|confirmed',
+                'required',
+                'email',
+                'unique:users,email',
+            ],
+            'password' => 'required|min:6|confirmed',
         ]);
 
         $hashedPassword = Hash::make($data['password']);
         $user = User::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'password' => $hashedPassword,
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => $hashedPassword,
         ]);
 
         return redirect()->route('login');
-}
+    }
 
 
     public function logout(Request $request)
@@ -69,7 +69,4 @@ class AdminController extends Controller
 
         return redirect()->route('login');
     }
-    
-
 }
-

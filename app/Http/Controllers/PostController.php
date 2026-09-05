@@ -18,9 +18,9 @@ class PostController extends Controller
         return view('dashboard', compact('posts'));
     }
     public function show(Post $post)
-{
-    return view('posts.show', compact('post'));
-}
+    {
+        return view('posts.show', compact('post'));
+    }
 
 
     // ==========================================
@@ -118,4 +118,3 @@ class PostController extends Controller
             ->with('success', 'Post deleted successfully.');
     }
 }
-
